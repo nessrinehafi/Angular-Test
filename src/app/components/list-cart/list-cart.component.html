@@ -1,0 +1,60 @@
+<div class="container">
+    <h1 class="mat-h1 main-title">[NPC] Beginner Merchant </h1>
+      <h3 class="mat-h3 test-description">
+          Hello Adventurer, welcome to the town of Angular!  <br/>
+          Here you can explore all the exciting stuff like meeting weird monster, learning new spell, and discovering rare item. <br/>
+          But first, you need some weapon/spell to accompany you along the way!  <br/>
+          I will give you 1000 gold, so choose your weapon/spell wisely~</h3>
+          
+<div class="card-wrapper" >
+ 
+  
+      <mat-card  *ngFor="let a of items ;let i = index" class="item-card mat-card">
+       
+        <mat-card-header class="card-mat-header" style="margin-top: 10px;">
+          <div class="card-mat-header-text"></div>
+
+          <mat-card-title class="card-mat-title">{{a.name}}</mat-card-title>
+          <mat-card-subtitle>Price :{{a.price}}</mat-card-subtitle>
+        </mat-card-header>
+        <div class="img-wrapper">      
+            <img class="mat-card-image"  src={{a.image}} alt="Photo of a Shiba Inu">
+
+        </div>
+        <mat-card-content>
+          <p>
+            {{a.desc}}
+          </p>
+        </mat-card-content>
+
+        <mat-card-actions class="right-button" >
+          <button  mat-button class="mat-button mat-button-base" (click)="itemStatus(i)" [color]="a.addedToCart ? 'primary' : 'default'" > 
+            <mat-icon>{{a.addedToCart ? 'shopping_cart' : 'add_shopping_cart'}}</mat-icon>
+        {{a.addedToCart ? 'Added' : 'Add To Cart'}} 
+        </button>
+        </mat-card-actions>
+      </mat-card>
+ 
+  
+      </div> 
+      <mat-divider class="divider" ></mat-divider>
+      <h2>Added to cart:</h2>
+ <div class="items-cart" *ngFor="let a of getInCart()">
+
+<div class="cart-item-wrapper" >
+   <div class="items-name">{{a.name}}</div> <div class="items-price">{{a.price}}</div>
+</div>
+
+</div>
+<mat-divider class="divider"></mat-divider>
+<div class="cart-item-wrapper">
+ <div class="items-label-total"> Total:</div><div class="items-total">{{getTotalprice()}}</div>
+  <div></div>
+</div>
+
+<button  class="buyButton" mat-raised-button color="primary" (click)="buyAction()">Buy</button>
+</div>
+
+     
+
+        
