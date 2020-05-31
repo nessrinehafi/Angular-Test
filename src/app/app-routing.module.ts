@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ListCartComponent } from './components/list-cart/list-cart.component';
-import { Task2Component } from './components/task2/task2.component';
+import { PlaylistComponent } from './components/playlist/playlist.component';
 
 
 const routes: Routes = [
   {path:"" , component:ListCartComponent},
-  {path:"task2" , component:Task2Component}
+  {path:"section2" , component:PlaylistComponent}
 ];
 
 @NgModule({

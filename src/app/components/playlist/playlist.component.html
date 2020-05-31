@@ -1,0 +1,40 @@
+<div class="container">
+    <h1 class="mat-display-2 main-title">The Playlists</h1>
+    <h3 class="main-title">Here you can create your own playlist, edit your already existing playlist, add songs, and show it to the world!</h3>
+    <div class="button-wrapper">
+      <button mat-raised-button color="primary" (click)="addPlaylistDialog()" >
+       <mat-icon>playlist_add</mat-icon> New Playlist
+      </button>
+    </div>
+<mat-divider></mat-divider>
+
+<div >
+   <mat-card class="playlist-container"  *ngFor="let p of playlists ;let i = index">
+     <mat-card-header>
+      <mat-card-title>{{p.name}}</mat-card-title>
+      <mat-card-subtitle>total  {{p.totalSongs}} songs, {{p.totalDuration}} minutes</mat-card-subtitle>      
+     </mat-card-header>
+     <mat-card-content>
+      <p>{{p.description}}     </p>
+      <mat-divider></mat-divider>
+      <mat-list *ngFor="let s of p.songs">
+        <mat-list-item >
+          <mat-icon class="mat-icon notranslate mat-list-icon material-icons mat-icon-no-color">music_note</mat-icon>
+          <div class="mat-list-text">
+            <h4 class="mat-line" mat-line="">{{s.title}}</h4>
+            <p class="mat-line" mat-line="">by {{s.artist}} · {{s.duration}} minutes</p>
+          </div>
+        </mat-list-item>
+       
+      </mat-list>
+     </mat-card-content>
+  <mat-card-actions>
+    <button mat-button color="warn" (click)="deletePlaylist(i)">DELETE</button>
+    <button mat-button (click)="editPlaylist(p , i)" >EDIT</button>
+  </mat-card-actions>
+   </mat-card>
+
+
+</div>
+  </div>
+  

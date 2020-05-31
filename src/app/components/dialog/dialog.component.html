@@ -1,0 +1,76 @@
+<h1 mat-dialog-title>Create New Playlist
+</h1>
+<form [formGroup]='form'>
+<div>
+
+  <div mat-dialog-content>
+
+
+      <mat-form-field class="input-width" appearance="standard">
+        <mat-label>Playlist name</mat-label>
+        <input  matInput placeholder="" required formControlName="name" >
+ 
+      </mat-form-field>
+      <mat-form-field class="input-width" appearance="standard">
+        <mat-label>Description</mat-label>
+        <input  matInput placeholder="" required formControlName="description"  >
+ 
+      </mat-form-field>
+ 
+     
+
+  <div formArrayName="songs" >
+    <div *ngFor = "let song of songsform().controls; let i = index">
+      <div class="song-input-wrapper" [formGroupName]="i">
+        <mat-form-field  appearance="standard">
+          <mat-label>Song Title</mat-label>
+          <input  matInput placeholder="" required formControlName="title">
+   
+        </mat-form-field>
+        <mat-form-field  appearance="standard">
+          <mat-label>Artist</mat-label>
+          <input matInput placeholder="" required formControlName="artist">
+   
+        </mat-form-field>
+        <mat-form-field appearance="standard">
+          <mat-label>Duration</mat-label>
+          <input matInput type="number" required  formControlName="duration">
+          <span matSuffix>minutes</span>
+        </mat-form-field>
+        <div class="song-attribute" class="align-right grow">
+          <button
+            *ngIf="i === songsform().controls.length - 1"
+            mat-icon-button
+            color="primary"
+            (click)="addSong()"
+          >
+            <mat-icon>add_circle</mat-icon>
+          </button>
+          <button
+            *ngIf="songsform().controls.length > 1"
+            mat-icon-button
+            color="warn"
+            (click)="removeSong(i)"
+          >
+            <mat-icon>remove_circle</mat-icon>
+          </button>
+        </div>
+         
+        
+      </div>
+    </div>
+  </div>
+
+
+
+</div>
+
+
+  
+  </div>
+         <mat-dialog-actions class="action-buttons">
+    <button mat-raised-button  color="warn" (click)="close()" >Cancel </button>
+  <button mat-raised-button color="primary"    [mat-dialog-close]="onSubmit()">Submit</button>
+
+  </mat-dialog-actions>  
+</form>

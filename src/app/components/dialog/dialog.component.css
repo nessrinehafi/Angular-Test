@@ -1,0 +1,13 @@
+.input-width{
+    width: 100%;
+}
+.song-input-wrapper
+{
+    display: flex;
+    justify-content: space-evenly;
+    margin-left: -50px;
+}
+.action-buttons{
+    justify-content: center;
+}
+
