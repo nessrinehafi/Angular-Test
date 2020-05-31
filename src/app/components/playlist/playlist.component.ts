@@ -100,7 +100,6 @@ export class PlaylistComponent implements OnInit {
         this.name = result.name;
         this.description=result.description;
         this.songs=result.songs;
-        alert(this.songs.length);
         this.addPlaylist();
         }
        
@@ -122,13 +121,13 @@ export class PlaylistComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
          this.playlists[index] = playlist;
-        this.songs= result.song;
+        this.songs= result.songs;
         this.playlists[index].name = result.name;
         this.playlists[index].description = result.description;
 
        
    
-        this.playlists[index].songs = result.song;
+        this.playlists[index].songs = result.songs;
 
       }
     });
