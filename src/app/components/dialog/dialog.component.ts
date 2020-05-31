@@ -27,17 +27,11 @@ export class DialogComponent implements OnInit {
 
   ngOnInit(): void {
 
-   this.form = new FormGroup(
-      {
-        name:new FormControl('', Validators.required),
-        description:new FormControl('',Validators.required),
-        title:new FormControl('',Validators.required),
-        artist:new FormControl('',Validators.required),
-        duration:new FormControl(0,[Validators.required , Validators.min(0)]),
-        songs:  this.formBuilder.array([ this.createSong() ])
-  
-  
-      }
+    this.form = this.formBuilder.group({
+      name: [null, Validators.required],
+      description: [null, Validators.required],
+      songs: this.formBuilder.array([ this.createSong() ]),
+    }
     )
     if (this.data.operation === 'edit') {
       this.form = this.formBuilder.group({
@@ -86,7 +80,7 @@ removeSong(index: number): void {
     formValues.songs.forEach((song: Song) => {
       totalDuration += song.duration;
     });
-    if (true) {
+    if (this.form.valid) {
       const finalPlaylist: Playlist = {
         name: formValues.name,
         description: formValues.description,
