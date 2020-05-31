@@ -124,8 +124,12 @@ export class PlaylistComponent implements OnInit {
         this.songs= result.songs;
         this.playlists[index].name = result.name;
         this.playlists[index].description = result.description;
-
-       
+        let totalDurations = 0;
+        this.songs.forEach((song: Song) => {
+          totalDurations += song.duration;
+        });
+        this.playlists[index].totalDuration = totalDurations;
+        this.playlists[index].totalSongs = this.songs.length;
    
         this.playlists[index].songs = result.songs;
 
